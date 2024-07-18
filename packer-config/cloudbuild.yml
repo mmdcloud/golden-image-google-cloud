@@ -27,3 +27,6 @@ images:
   - "gcr.io/$PROJECT_ID/packer:latest"
   - "gcr.io/$PROJECT_ID/packer:${_PACKER_VERSION}"
 tags: ["cloud-builders-community"]
+
+options:
+  logging: CLOUD_LOGGING_ONLY
