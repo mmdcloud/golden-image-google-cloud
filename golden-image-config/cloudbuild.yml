@@ -1,0 +1,12 @@
+steps:
+  - name: "gcr.io/$PROJECT_ID/packer"
+    args:
+      - init
+      - -var-file=variables.pkrvars.hcl
+      - ubuntu.pkr.hcl
+  - name: "gcr.io/$PROJECT_ID/packer"
+    args:
+      - build
+      - -var-file=variables.pkrvars.hcl
+      - ubuntu.pkr.hcl
+tags: ["cloud-builders-community"]
