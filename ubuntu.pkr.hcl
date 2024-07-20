@@ -1,3 +1,12 @@
+packer {
+  required_plugins {
+    googlecompute = {
+      source  = "github.com/hashicorp/googlecompute"
+      version = "~> 1"
+    }
+  }
+}
+
 source "googlecompute" "nginx" {
   project_id              = var.project_id
   source_image            = "ubuntu-2004-focal-v20220204"
