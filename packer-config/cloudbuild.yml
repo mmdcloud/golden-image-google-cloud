@@ -7,7 +7,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "packer", "packer-config/"]
 images:
-  - "https://asia-south1-docker.pkg.dev/custom-ground-424107-q4/packer/packer:latest"
+  - "https://us-central1-docker.pkg.dev/custom-ground-424107-q4/packer/packer:latest"
 tags: ["cloud-builders-community"]
 
 options:
