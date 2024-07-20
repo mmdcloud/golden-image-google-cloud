@@ -1,6 +1,6 @@
 FROM alpine:3.14 AS build
 
-COPY ../packer_1.11.1_linux_amd64.zip .
+COPY packer_1.11.1_linux_amd64.zip .
 
 RUN /usr/bin/unzip packer_1.11.1_linux_amd64.zip
 
