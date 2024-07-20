@@ -10,3 +10,5 @@ steps:
       - -var-file=variables.pkrvars.hcl
       - ubuntu.pkr.hcl
 tags: ["cloud-builders-community"]
+options:
+  logging: CLOUD_LOGGING_ONLY
