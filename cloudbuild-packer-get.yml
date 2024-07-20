@@ -18,8 +18,6 @@ steps:
         "push",
         "us-central1-docker.pkg.dev/custom-ground-424107-q4/packer/packer",
       ]
-images:
-  - "https://us-central1-docker.pkg.dev/custom-ground-424107-q4/packer/packer:latest"
 tags: ["cloud-builders-community"]
 
 options:
