@@ -29,7 +29,7 @@ build {
 
   provisioner "shell" {
     inline = [
-      "sudo apt-get update"
+      "sudo apt-get update",
       "sudo apt-get install -y nginx"
       // "sudo sh /tmp/scripts/nginx.sh",
       // "sudo rm -rf /tmp/scripts",
