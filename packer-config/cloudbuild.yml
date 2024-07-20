@@ -1,25 +1,13 @@
-# $ gcloud builds submit . --config=cloudbuild.yaml
 steps:
   - name: "gcr.io/cloud-builders/wget"
     args:
       [
-        "https://releases.hashicorp.com/packer/${_PACKER_VERSION}/packer_${_PACKER_VERSION}_linux_amd64.zip",
+        "https://releases.hashicorp.com/packer/1.11.1/packer_1.11.1_linux_amd64.zip",
       ]
   - name: "gcr.io/cloud-builders/docker"
-    args:
-      [
-        "build",
-        "-t",
-        "gcr.io/$PROJECT_ID/packer",
-        "--build-arg",
-        "PACKER_VERSION=${_PACKER_VERSION}",
-        ".",
-      ]
-substitutions:
-  _PACKER_VERSION: 1.11.1
-
+    args: ["build", "-t", "packer", "."]
 images:
-  - "gcr.io/$PROJECT_ID/packer:latest"
+  - "https://asia-south1-docker.pkg.dev/custom-ground-424107-q4/packer/packer:latest"
 tags: ["cloud-builders-community"]
 
 options:
