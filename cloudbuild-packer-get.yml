@@ -5,12 +5,18 @@ steps:
         "https://releases.hashicorp.com/packer/1.11.1/packer_1.11.1_linux_amd64.zip",
       ]
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "packer", "."]
+    args:
+      [
+        "build",
+        "-t",
+        "https://us-central1-docker.pkg.dev/custom-ground-424107-q4/packer",
+        ".",
+      ]
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "push",
-        "https://us-central1-docker.pkg.dev/custom-ground-424107-q4/packer:latest",
+        "https://us-central1-docker.pkg.dev/custom-ground-424107-q4/packer",
       ]
 images:
   - "https://us-central1-docker.pkg.dev/custom-ground-424107-q4/packer:latest"
