@@ -9,14 +9,14 @@ steps:
       [
         "build",
         "-t",
-        "us-central1-docker.pkg.dev/custom-ground-424107-q4/packer/packer",
+        "us-central1-docker.pkg.dev/orbital-bee-455915-h5/packer/packer",
         ".",
       ]
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "push",
-        "us-central1-docker.pkg.dev/custom-ground-424107-q4/packer/packer",
+        "us-central1-docker.pkg.dev/orbital-bee-455915-h5/packer/packer",
       ]
 tags: ["cloud-builders-community"]
 

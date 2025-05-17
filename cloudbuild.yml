@@ -1,10 +1,10 @@
 steps:
-  - name: "us-central1-docker.pkg.dev/custom-ground-424107-q4/packer/packer"
+  - name: "us-central1-docker.pkg.dev/orbital-bee-455915-h5/packer/packer"
     args:
       - init
       - -var-file=variables.pkrvars.hcl
       - ubuntu.pkr.hcl
-  - name: "us-central1-docker.pkg.dev/custom-ground-424107-q4/packer/packer"
+  - name: "us-central1-docker.pkg.dev/orbital-bee-455915-h5/packer/packer"
     args:
       - build
       - -var-file=variables.pkrvars.hcl

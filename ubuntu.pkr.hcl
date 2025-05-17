@@ -8,7 +8,7 @@ packer {
 }
 
 source "googlecompute" "nginx" {
-  project_id              = "custom-ground-424107-q4"
+  project_id              = "orbital-bee-455915-h5"
   source_image            = "ubuntu-2004-focal-v20220204"
   image_name              = "packer-putrisinu-nginx-{{timestamp}}"
   image_family            = "packer-putrisinu-nginx"  
