@@ -39,7 +39,10 @@ build {
   provisioner "shell" {
     inline = [
       "sudo apt-get update",
-      "sudo apt-get install -y nginx"
+      "sudo apt-get install -y nginx",
+      "curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh",
+      "sudo bash nodesource_setup.sh",
+      "sudo apt install nodejs -y"
       // "sudo sh /tmp/scripts/nginx.sh",
       // "sudo rm -rf /tmp/scripts",
       // "sudo apt-get update && sudo apt-get install software-properties-common -y",
