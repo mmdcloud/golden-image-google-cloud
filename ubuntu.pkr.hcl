@@ -49,6 +49,80 @@ build {
       // "sudo apt-add-repository -y --update ppa:ansible/ansible",
       // "sudo apt-get update",
       // "sudo apt-get install ansible -y"
+
+      # Exit on error
+      set -e
+      
+      # Update and upgrade system packages
+      sudo apt-get update
+      sudo apt-get -y upgrade
+      
+      # Install essential security packages
+      sudo apt-get install -y fail2ban ufw unattended-upgrades apt-listchanges
+      
+      # Harden SSH configuration
+      sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+      
+      sudo bash -c 'cat > /etc/ssh/sshd_config' <<EOL
+      Port 22
+      Protocol 2
+      HostKey /etc/ssh/ssh_host_ed25519_key
+      HostKey /etc/ssh/ssh_host_rsa_key
+      Ciphers aes256-ctr,aes192-ctr,aes128-ctr
+      MACs hmac-sha2-512,hmac-sha2-256
+      KexAlgorithms curve25519-sha256@libssh.org
+      SyslogFacility AUTH
+      LogLevel VERBOSE
+      PermitRootLogin no
+      StrictModes yes
+      PubkeyAuthentication yes
+      PasswordAuthentication no
+      ChallengeResponseAuthentication no
+      UsePAM yes
+      AllowTcpForwarding no
+      X11Forwarding no
+      PrintMotd no
+      ClientAliveInterval 300
+      ClientAliveCountMax 2
+      MaxAuthTries 3
+      EOL
+      
+      sudo systemctl reload sshd
+      
+      # Set up a new admin user
+      read -p "Enter new admin username: " adminuser
+      sudo adduser $adminuser
+      sudo usermod -aG sudo $adminuser
+      
+      # Lock root account
+      sudo passwd -l root
+      
+      # Configure Unattended Upgrades
+      sudo dpkg-reconfigure --priority=low unattended-upgrades
+      
+      # Enable UFW firewall
+      sudo ufw default deny incoming
+      sudo ufw default allow outgoing
+      sudo ufw allow 22/tcp
+      sudo ufw enable
+      
+      # Enable and start fail2ban
+      sudo systemctl enable fail2ban
+      sudo systemctl start fail2ban
+      
+      # Set file permissions for /home directories
+      sudo chmod 750 /home/*
+      
+      # Disable core dumps
+      echo '* hard core 0' | sudo tee -a /etc/security/limits.conf
+      echo 'fs.suid_dumpable = 0' | sudo tee -a /etc/sysctl.conf
+      sudo sysctl -p
+      
+      # Remove unnecessary packages
+      sudo apt-get autoremove --purge -y
+      
+      echo "Basic hardening complete. Review and customize further as needed."
+
     ]
   }
 
