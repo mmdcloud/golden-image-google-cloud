@@ -9,14 +9,14 @@ steps:
       [
         "build",
         "-t",
-        "us-central1-docker.pkg.dev/orbital-bee-455915-h5/packer/packer",
+        "us-central1-docker.pkg.dev/encoded-alpha-457108-e8/packer/packer",
         ".",
       ]
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "push",
-        "us-central1-docker.pkg.dev/orbital-bee-455915-h5/packer/packer",
+        "us-central1-docker.pkg.dev/encoded-alpha-457108-e8/packer/packer",
       ]
 tags: ["cloud-builders-community"]
 

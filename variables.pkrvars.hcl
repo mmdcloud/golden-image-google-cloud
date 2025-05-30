@@ -1,3 +1,3 @@
-project_id = "orbital-bee-455915-h5"
+project_id = "encoded-alpha-457108-e8"
 zone       = "us-central1-a"
-// builder_sa = "packer@orbital-bee-455915-h5.iam.gserviceaccount.com"
+// builder_sa = "packer@encoded-alpha-457108-e8.iam.gserviceaccount.com"
