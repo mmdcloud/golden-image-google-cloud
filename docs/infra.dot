@@ -1,0 +1,14 @@
+digraph INFRA {
+  node [ color = "black", fillcolor = "#E6E6E6", height =1, style = "filled,bold,rounded", fontname = "Arial" ];
+  "Packer Docker Image" [ label = "Packer Docker Image
+(Docker::Image)", shape =rectangle, fillcolor = "#B7E0FF" ];
+  "Google Cloud Build" [ label = "Google Cloud Build
+(Google::CloudBuild::Build)", shape =rectangle, fillcolor = "#B7E0FF" ];
+  "Google Cloud Logging" [ label = "Google Cloud Logging
+(Google::Logging::LogBucket)", shape =cylinder, fillcolor = "#FFF5CD" ];
+  "Google Container Registry" [ label = "Google Container Registry
+(Google::ContainerRegistry::Repository)", shape =cylinder, fillcolor = "#FFF5CD" ];
+  "Google Cloud Build" -> "Packer Docker Image";
+  "Google Cloud Logging" -> "Google Cloud Build";
+  "Google Container Registry" -> "Packer Docker Image";
+}
